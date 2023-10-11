@@ -70,3 +70,10 @@ favoriteBytesData == savedFavoriteBytesData
 try favoriteBytesData.write(to: favoritesByteURL.appendingPathExtension("txt"))
 
 let string = String(data: savedFavoriteBytesData, encoding: .utf8)!
+
+let challengeStringURL = URL(filePath: "String", relativeTo: FileManager.documentDirectoryUrl)
+try string.write(to: challengeStringURL, atomically: true, encoding: .utf8)
+let savedChallengeStringData = try Data(contentsOf: challengeStringURL)
+let savedChallengeString = String(data: savedFavoriteBytesData, encoding: .utf8)
+
+savedChallengeString == string
