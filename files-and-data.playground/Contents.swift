@@ -66,3 +66,7 @@ let savedFavoriteBytes = Array(savedFavoriteBytesData)
 
 favoriteBytes == savedFavoriteBytes
 favoriteBytesData == savedFavoriteBytesData
+
+try favoriteBytesData.write(to: favoritesByteURL.appendingPathExtension("txt"))
+
+let string = String(data: savedFavoriteBytesData, encoding: .utf8)!
