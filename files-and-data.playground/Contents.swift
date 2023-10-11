@@ -52,5 +52,17 @@ let favoriteBytes: [UInt8] = [
     0b1111_0000, 0b1001_1111, 0b1001_1000, 186,
     0xF0, 0x9F, 0x98, 187
 ]
-
 MemoryLayout<UInt8>.size * favoriteBytes.count
+
+let favoriteBytesData = Data(favoriteBytes)
+
+let favoritesByteURL = URL(filePath: "Favorite Bytes", relativeTo: FileManager.documentDirectoryUrl)
+
+try favoriteBytesData.write(to: favoritesByteURL)
+
+let savedFavoriteBytesData = try Data(contentsOf: favoritesByteURL)
+
+let savedFavoriteBytes = Array(savedFavoriteBytesData)
+
+favoriteBytes == savedFavoriteBytes
+favoriteBytesData == savedFavoriteBytesData
