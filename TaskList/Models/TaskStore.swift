@@ -32,7 +32,12 @@ import Foundation
 class TaskStore: ObservableObject {
     let tasksJSONURL = URL(fileURLWithPath: "PrioritizedTasks", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
 
-    @Published var prioritizedTasks: [PrioritizedTasks] = [] {
+    @Published var prioritizedTasks: [PrioritizedTasks] = [
+        PrioritizedTasks(priority: .high, tasks: []),
+        PrioritizedTasks(priority: .medium, tasks: []),
+        PrioritizedTasks(priority: .low, tasks: []),
+        PrioritizedTasks(priority: .no, tasks: [])
+    ] {
         didSet {
             saveJSONPrioritizedTasks()
         }
