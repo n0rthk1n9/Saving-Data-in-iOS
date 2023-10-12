@@ -30,7 +30,13 @@ import Combine
 import Foundation
 
 class TaskStore: ObservableObject {
-    @Published var prioritizedTasks: [PrioritizedTasks] = []
+    let tasksJSONURL = URL(fileURLWithPath: "PrioritizedTasks", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
+
+    @Published var prioritizedTasks: [PrioritizedTasks] = [] {
+        didSet {
+            saveJSONPrioritizedTask()
+        }
+    }
 
     init() {
         loadJSONPrioritizedTasks()
@@ -47,8 +53,6 @@ class TaskStore: ObservableObject {
         let temporaryDirectoryURL = FileManager.default.temporaryDirectory
         print(temporaryDirectoryURL)
 
-        let tasksJSONURL = URL(fileURLWithPath: "PrioritizedTasks", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
-
         print((try? FileManager.default.contentsOfDirectory(atPath: FileManager.documentsDirectoryURL.path)) ?? [])
 
         let decoder = JSONDecoder()
@@ -56,6 +60,18 @@ class TaskStore: ObservableObject {
         do {
             let tasksData = try Data(contentsOf: tasksJSONURL)
             prioritizedTasks = try decoder.decode([PrioritizedTasks].self, from: tasksData)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    private func saveJSONPrioritizedTask() {
+        let encoder = JSONEncoder()
+
+        do {
+            let taskData = try encoder.encode(prioritizedTasks.first?.tasks.last)
+            let taskJSONURL = URL(fileURLWithPath: "Task", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
+            try taskData.write(to: taskJSONURL, options: .atomic)
         } catch {
             print(error.localizedDescription)
         }
