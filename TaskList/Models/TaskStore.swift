@@ -55,6 +55,10 @@ class TaskStore: ObservableObject {
     }
 
     private func loadJSONPrioritizedTasks() {
+        guard FileManager.default.fileExists(atPath: tasksJSONURL.path) else {
+            return
+        }
+
         print(Bundle.main.bundleURL)
         print(FileManager.documentsDirectoryURL)
 
@@ -74,6 +78,10 @@ class TaskStore: ObservableObject {
     }
 
     private func loadPlistPrioritizedTasks() {
+        guard FileManager.default.fileExists(atPath: tasksPropertyListURL.path) else {
+            return
+        }
+
         let decoder = PropertyListDecoder()
 
         do {
