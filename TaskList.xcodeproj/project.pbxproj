@@ -25,8 +25,10 @@
 		49EEFE4E232484F6002A7EA8 /* TaskStore.PrioritizedTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEFE4D232484F6002A7EA8 /* TaskStore.PrioritizedTasks.swift */; };
 		49FA301C22DC987B00E4CA56 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA301B22DC987B00E4CA56 /* RowView.swift */; };
 		556EF3AC2330849700FD33A9 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556EF3AB2330849700FD33A9 /* FileManager.swift */; };
-		5589F393233061D4008D3719 /* Task.json in Resources */ = {isa = PBXBuildFile; fileRef = 5589F392233061D4008D3719 /* Task.json */; };
-		5589F395233063AA008D3719 /* PrioritizedTask.json in Resources */ = {isa = PBXBuildFile; fileRef = 5589F394233063AA008D3719 /* PrioritizedTask.json */; };
+		57FD1B182AD821EA002136D2 /* Tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 57FD1B142AD821EA002136D2 /* Tasks.json */; };
+		57FD1B192AD821EA002136D2 /* PrioritizedTask.json in Resources */ = {isa = PBXBuildFile; fileRef = 57FD1B152AD821EA002136D2 /* PrioritizedTask.json */; };
+		57FD1B1A2AD821EA002136D2 /* Task.json in Resources */ = {isa = PBXBuildFile; fileRef = 57FD1B162AD821EA002136D2 /* Task.json */; };
+		57FD1B1B2AD821EA002136D2 /* PrioritizedTasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 57FD1B172AD821EA002136D2 /* PrioritizedTasks.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,8 +52,10 @@
 		49EEFE4D232484F6002A7EA8 /* TaskStore.PrioritizedTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.PrioritizedTasks.swift; sourceTree = "<group>"; };
 		49FA301B22DC987B00E4CA56 /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		556EF3AB2330849700FD33A9 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
-		5589F392233061D4008D3719 /* Task.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Task.json; sourceTree = "<group>"; };
-		5589F394233063AA008D3719 /* PrioritizedTask.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PrioritizedTask.json; sourceTree = "<group>"; };
+		57FD1B142AD821EA002136D2 /* Tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Tasks.json; sourceTree = "<group>"; };
+		57FD1B152AD821EA002136D2 /* PrioritizedTask.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PrioritizedTask.json; sourceTree = "<group>"; };
+		57FD1B162AD821EA002136D2 /* Task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Task.json; sourceTree = "<group>"; };
+		57FD1B172AD821EA002136D2 /* PrioritizedTasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PrioritizedTasks.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,8 +155,10 @@
 			isa = PBXGroup;
 			children = (
 				49A2856622DC34F700B65A77 /* Assets.xcassets */,
-				5589F392233061D4008D3719 /* Task.json */,
-				5589F394233063AA008D3719 /* PrioritizedTask.json */,
+				57FD1B152AD821EA002136D2 /* PrioritizedTask.json */,
+				57FD1B172AD821EA002136D2 /* PrioritizedTasks.json */,
+				57FD1B162AD821EA002136D2 /* Task.json */,
+				57FD1B142AD821EA002136D2 /* Tasks.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -223,11 +229,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5589F393233061D4008D3719 /* Task.json in Resources */,
+				57FD1B1A2AD821EA002136D2 /* Task.json in Resources */,
+				57FD1B182AD821EA002136D2 /* Tasks.json in Resources */,
+				57FD1B192AD821EA002136D2 /* PrioritizedTask.json in Resources */,
 				49A2856D22DC34F700B65A77 /* LaunchScreen.storyboard in Resources */,
-				5589F395233063AA008D3719 /* PrioritizedTask.json in Resources */,
 				49A2856A22DC34F700B65A77 /* Preview Assets.xcassets in Resources */,
 				49A2856722DC34F700B65A77 /* Assets.xcassets in Resources */,
+				57FD1B1B2AD821EA002136D2 /* PrioritizedTasks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
