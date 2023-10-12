@@ -31,6 +31,7 @@ import Foundation
 
 class TaskStore: ObservableObject {
     let tasksJSONURL = URL(fileURLWithPath: "PrioritizedTasks", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
+    let tasksPropertyListURL = URL(fileURLWithPath: "PrioritizedTasks", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("plist")
 
     @Published var prioritizedTasks: [PrioritizedTasks] = [
         PrioritizedTasks(priority: .high, tasks: []),
@@ -40,11 +41,13 @@ class TaskStore: ObservableObject {
     ] {
         didSet {
             saveJSONPrioritizedTasks()
+            savePlistPrioritizedTasks()
         }
     }
 
     init() {
         loadJSONPrioritizedTasks()
+        loadPlistPrioritizedTasks()
     }
 
     func getIndex(for priority: Task.Priority) -> Int {
@@ -70,6 +73,17 @@ class TaskStore: ObservableObject {
         }
     }
 
+    private func loadPlistPrioritizedTasks() {
+        let decoder = PropertyListDecoder()
+
+        do {
+            let tasksData = try Data(contentsOf: tasksPropertyListURL)
+            prioritizedTasks = try decoder.decode([PrioritizedTasks].self, from: tasksData)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
     private func saveJSONPrioritizedTasks() {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
@@ -77,6 +91,18 @@ class TaskStore: ObservableObject {
         do {
             let taskData = try encoder.encode(prioritizedTasks)
             try taskData.write(to: tasksJSONURL, options: .atomic)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    private func savePlistPrioritizedTasks() {
+        let encoder = PropertyListEncoder()
+        encoder.outputFormat = .xml
+
+        do {
+            let taskData = try encoder.encode(prioritizedTasks)
+            try taskData.write(to: tasksPropertyListURL, options: .atomic)
         } catch {
             print(error.localizedDescription)
         }
