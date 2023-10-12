@@ -34,7 +34,7 @@ class TaskStore: ObservableObject {
 
     @Published var prioritizedTasks: [PrioritizedTasks] = [] {
         didSet {
-            saveJSONPrioritizedTask()
+            saveJSONPrioritizedTasks()
         }
     }
 
@@ -65,13 +65,13 @@ class TaskStore: ObservableObject {
         }
     }
 
-    private func saveJSONPrioritizedTask() {
+    private func saveJSONPrioritizedTasks() {
         let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
 
         do {
-            let taskData = try encoder.encode(prioritizedTasks.first?.tasks.last)
-            let taskJSONURL = URL(fileURLWithPath: "Task", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
-            try taskData.write(to: taskJSONURL, options: .atomic)
+            let taskData = try encoder.encode(prioritizedTasks)
+            try taskData.write(to: tasksJSONURL, options: .atomic)
         } catch {
             print(error.localizedDescription)
         }
